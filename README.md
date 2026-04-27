@@ -10,14 +10,14 @@ and security logging of every unauthorized attempt.
 
 ## Features
 
-| Task | Endpoint | Notes |
-|------|----------|-------|
-| 1. Hashing      | `POST /register` | Passwords stored as bcrypt hashes (per-password salt). |
-| 2. JWT issuance | `POST /login`    | Returns HS256 JWT with `sub`, `role`, `exp`, `iat`, `jti`. |
-| 3. Validation   | `@token_required` decorator | Verifies signature + expiry on every protected route. |
-| 4. RBAC         | `GET /profile` (any) / `DELETE /user/<id>` (admin) | Enforced by `@admin_required`. |
-| 5. Revocation   | `POST /logout`   | Adds the token's `jti` to an in-memory blacklist. |
-| 6. Logging      | `security.log`   | Every 401/403 attempt: timestamp, status, route, reason, IP. |
+| Task            | Endpoint                                           | Notes                                                        |
+| --------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| 1. Hashing      | `POST /register`                                   | Passwords stored as bcrypt hashes (per-password salt).       |
+| 2. JWT issuance | `POST /login`                                      | Returns HS256 JWT with `sub`, `role`, `exp`, `iat`, `jti`.   |
+| 3. Validation   | `@token_required` decorator                        | Verifies signature + expiry on every protected route.        |
+| 4. RBAC         | `GET /profile` (any) / `DELETE /user/<id>` (admin) | Enforced by `@admin_required`.                               |
+| 5. Revocation   | `POST /logout`                                     | Adds the token's `jti` to an in-memory blacklist.            |
+| 6. Logging      | `security.log`                                     | Every 401/403 attempt: timestamp, status, route, reason, IP. |
 
 ## Setup
 
@@ -161,3 +161,23 @@ pytest -q
   homework; production systems would persist revocations (e.g. Redis with TTL).
 - **Dev secret:** `config.py` ships with a fallback `SECRET_KEY`. Override it in
   production via the `SECRET_KEY` environment variable.
+
+---
+
+## Team Information
+
+**Team Name:** JWT Guardians
+
+**Members:**
+
+- İsmail Girayhan Durmuş — 210208010
+- Batuhan Okullu — 240208401
+
+## Demo Video
+
+The project demo video will be submitted separately through the LMS as an unlisted YouTube link.
+
+## Submission Notes
+
+This repository contains the final source code for the SecureShield RBAC API project.  
+Runtime-generated files such as `.venv/`, `__pycache__/`, `users.db`, and `security.log` are intentionally excluded from version control.
