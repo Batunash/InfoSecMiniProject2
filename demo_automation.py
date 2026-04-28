@@ -101,7 +101,7 @@ def print_info(text: str):
 
 def scene_register():
     """Scene 3: Register a new user."""
-    print_header("SCENE 3: REGISTER USER")
+    print_header("SCENE 1: REGISTER USER")
 
     endpoint = f"{BASE_URL}/register"
     headers = {"Content-Type": "application/json"}
@@ -131,7 +131,7 @@ def scene_register():
 
 def scene_login():
     """Scene 4: Login and get JWT token."""
-    print_header("SCENE 4: LOGIN AND TOKEN ACQUISITION")
+    print_header("SCENE 2: LOGIN AND TOKEN ACQUISITION")
 
     endpoint = f"{BASE_URL}/login"
     headers = {"Content-Type": "application/json"}
@@ -171,7 +171,7 @@ def scene_login():
 
 def scene_profile(token: str):
     """Scene 5: Access profile endpoint with valid token."""
-    print_header("SCENE 5: PROFILE ACCESS")
+    print_header("SCENE 3: PROFILE ACCESS")
 
     endpoint = f"{BASE_URL}/profile"
     headers = {"Authorization": f"Bearer {token}"}
@@ -198,7 +198,7 @@ def scene_profile(token: str):
 
 def scene_rbac_test(token: str):
     """Scene 6: Test RBAC - user trying to access admin endpoint."""
-    print_header("SCENE 6: RBAC TEST - 403 FORBIDDEN")
+    print_header("SCENE 4: RBAC TEST - 403 FORBIDDEN")
 
     endpoint = f"{BASE_URL}/user/{ADMIN_USER_ID}"
     headers = {"Authorization": f"Bearer {token}"}
@@ -225,7 +225,7 @@ def scene_rbac_test(token: str):
 
 def scene_jwt_tamper_test(token: str):
     """Scene 7: Test JWT tampering - modify role and try again."""
-    print_header("SCENE 7: JWT TAMPER TEST - 401 INVALID TOKEN")
+    print_header("SCENE 5: JWT TAMPER TEST - 401 INVALID TOKEN")
 
     # Decode the token
     try:
@@ -275,7 +275,7 @@ def scene_jwt_tamper_test(token: str):
 
 def scene_logout(token: str):
     """Scene 8: Logout and blacklist the token."""
-    print_header("SCENE 8: LOGOUT AND TOKEN BLACKLIST")
+    print_header("SCENE 6: LOGOUT AND TOKEN BLACKLIST")
 
     endpoint = f"{BASE_URL}/logout"
     headers = {"Authorization": f"Bearer {token}"}
@@ -301,7 +301,7 @@ def scene_logout(token: str):
 
 def scene_revoked_token_test(token: str):
     """Scene 9: Test that revoked token is rejected."""
-    print_header("SCENE 9: REVOKED TOKEN TEST - 401 TOKEN REVOKED")
+    print_header("SCENE 7: REVOKED TOKEN TEST - 401 TOKEN REVOKED")
 
     endpoint = f"{BASE_URL}/profile"
     headers = {"Authorization": f"Bearer {token}"}
